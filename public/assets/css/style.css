@@ -1,0 +1,32 @@
+body {
+  font: 12px sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+label {
+  font-size: 11px;
+  color: #999;
+}
+
+.asin-name {
+  font-size: 14px;
+  padding: 0;
+  margin: 0 0 5px;
+}
+
+.asin-selector {
+  margin-bottom: 5px;
+}
+
+.buy-box {
+  border: 1px solid #6DAEE1;
+  background: #fff;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  padding: 8px;
+}
+
+.add-to-cart-btn {
+  vertical-align: bottom;
+}

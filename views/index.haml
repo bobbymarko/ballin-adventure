@@ -1,1 +1,21 @@
-test
+!!!
+%html
+  %head
+    %link{:rel=>"stylesheet", :href=>"/assets/css/style.css"}
+  %body
+    .buy-box
+      - @products.find('Item') do |item|
+      
+        %h1.asin-name= item['ItemAttributes']['Title']
+        
+        %form{:method=>"GET", :action=>"http://www.amazon.com/gp/aws/cart/add.html"}
+          %span.asin-selector
+            %label{:for=>"product"}
+              Select a product:
+            %select{:name=>"product", :id=>"product"}
+              %option
+                Test
+          %input{:type=>"hidden", :name=>"AssociateTag", :value=>"wefouadv-20"}
+          %input{:type=>"hidden", :name=>"ASIN.1", :value=>item['ASIN']}
+          %input{:type=>"hidden", :name=>"Quantity.1", :value=>"1"}
+          %input{:type=>"image", :name=>"add", :class=>"add-to-cart-btn", :value=>"Buy from Amazon.com", :alt=>"Buy from Amazon.com", :src=>"http://g-ecx.images-amazon.com/images/G/01/common/sprites/btn_add-to-cart._V156421482_.png"}

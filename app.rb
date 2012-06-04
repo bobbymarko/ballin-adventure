@@ -1,6 +1,7 @@
 require 'sinatra'
+require 'vacuum'
 
-get '/' do
+get '/asin/:asin' do # example asin: B000O9WEY2
   req = Vacuum.new :product_advertising
 
   req.configure do |config|
@@ -9,13 +10,16 @@ get '/' do
     config.tag    = 'wefouadv-20'
   end
   
-  req.build operation:  'ItemSearch',
-          search_index: 'Books',
-          keywords:     'Deleuze'
+  req.build operation:	    'ItemLookup',
+            item_id:        params[:asin],
+            response_group: 'ItemAttributes,Images'
+  	
   res = req.get
   
   res.valid? or raise res.code
   
-  p res.body
+  @products = res
+  
+  haml :index
   
 end
