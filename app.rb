@@ -9,7 +9,7 @@ get '/' do
     config.tag    = 'wefouadv-20'
   end
   
-  req.build operation:    'ItemSearch',
+  req.build operation:  'ItemSearch',
           search_index: 'Books',
           keywords:     'Deleuze'
   res = req.get
